@@ -15,4 +15,7 @@ Ejemplo:
   
   36,851,234.35
   
+  LIMITACIONES:
+  Hasta ahora solo acepta numeros de 9 cifras (Centenas de Millon) en la parte entera, estoy trabajando para ampliarlo hasta Billones.
+  
 Cualquier sugerencia será más que bienvenida, no soy un programador experto pero estoy trabajando para serlo 
