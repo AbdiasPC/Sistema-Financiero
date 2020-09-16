@@ -32,7 +32,14 @@ namespace TranscribirMontos
 
 
                     var SalidaEnteros = LeerDigitos(cifras, CantidadPartes(cifras));
-                    var SalidaDecimales = LeerDigitos(SepDecimales(monto));
+
+                    var Decimales = SepDecimales(monto);
+                    if(Decimales.Length > 3)
+                    {
+                        throw new Exception("El número de Cifras Decimales excedió 3 cifras.");
+                    }
+
+                    var SalidaDecimales = LeerDigitos(Decimales);
 
                     Console.WriteLine(SalidaEnteros + " PESOS CON " + SalidaDecimales + " CENTAVOS");
 
@@ -47,7 +54,14 @@ namespace TranscribirMontos
                     ImprimirDigitos(monto);
 
                     var SalidaEnteros = LeerDigitos(cifras);
-                    var SalidaDecimales = LeerDigitos(SepDecimales(monto));
+
+                    var Decimales = SepDecimales(monto);
+                    if (Decimales.Length > 3)
+                    {
+                        throw new Exception("El número de Cifras Decimales excedió 3 cifras.");
+                    }
+
+                    var SalidaDecimales = LeerDigitos(Decimales);
 
                     Console.WriteLine(SalidaEnteros + " PESOS CON "+ SalidaDecimales+" CENTAVOS");
 
