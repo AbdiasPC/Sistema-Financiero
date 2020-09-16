@@ -14,6 +14,8 @@ namespace TranscribirMontos
             string monto = Console.ReadLine();
 
             Transcribir.LeerMonto(monto);
+
+            
         }
     }
 }

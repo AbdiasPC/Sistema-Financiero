@@ -11,8 +11,8 @@ namespace TranscribirMontos
     {
         public Transcribir(string monto)
         {
-            this.monto = monto;
-            this.digitos = monto.Length;
+            this.Monto = monto;
+            this.Digitos = monto.Length;
         }
 
         public static void LeerMonto(string monto)
@@ -103,12 +103,7 @@ namespace TranscribirMontos
 
         private static bool IsDecimal(string monto)
         {
-            bool response = false;
-
-            if (monto.Contains("."))
-                response = true;
-
-            return response;
+            return monto.Contains(".");
         }
 
         private static bool EsSeparable(string monto)
@@ -129,45 +124,30 @@ namespace TranscribirMontos
                 }
 
             }
-            //else
-            //{
-            //    if (IsDecimal(monto))
-            //    {
-            //        int index = monto.IndexOf('.');
-            //        var prueba = monto.Remove(index);
-            //        if (prueba.Length > 3)
-            //        {
-            //            throw new Exception("Necesita separar con ',' despues de cada 3 digitos.");
-            //        }
-            //    }
-            //    if(monto.Length > 3)
-            //    {
-            //        throw new Exception("Necesita separar con ',' despues de cada 3 digitos."); 
-            //    }
-            //}
 
             return decision;
         }
 
+
         private static string[] SepDigitosConDecimales(string cifras)
         {
             var numeros = cifras.Split(',');
-            string[] Numeros = new string[numeros.Length];
+            string[] nuevoNumeros = new string[numeros.Length];
 
             for(int i = 0; i < numeros.Length; i++)
             {
                 if (!numeros[i].Contains('.'))
                 {
-                    Numeros[i] = numeros[i];
+                    nuevoNumeros[i] = numeros[i];
                 }
                 else
                 {
                     int index = numeros[i].IndexOf('.');
-                    Numeros[i] = numeros[i].Remove(index);
+                    nuevoNumeros[i] = numeros[i].Remove(index);
                 }
             }
 
-            return Numeros;
+            return nuevoNumeros;
         }
 
         private static string[] SepDigitos(string cifras)
@@ -186,18 +166,18 @@ namespace TranscribirMontos
 
         private static string SepDecimales(string decimales)
         {
-            string Decimales = "";
-            var numeros = SepDigitos(decimales);
+            string numDecimales = "";
+            string[] numeros = SepDigitos(decimales);
             for(int i = 0; i < numeros.Length; i++)
             {
                 if (numeros[i].Contains('.'))
                 {
                     int index = numeros[i].IndexOf('.');
-                   Decimales = numeros[i].Substring(index+1);
+                    numDecimales = numeros[i].Substring(index+1);
                 }
             }
 
-            return Decimales;
+            return numDecimales;
         }
 
         private static void Imprimir(string[] partes)
@@ -417,7 +397,7 @@ namespace TranscribirMontos
                 case 2:
                     if (numeros[0] == '0')
                     {
-                        Transcipcion +=  "";
+                        Transcipcion +=  String.Empty;
                         ///////------------///////AGREGAR A LA LISTA DEDECNAS MAS CASOS DE DECENAS///////------------///////
                     }
                     else if (numeros[1] == '0')
@@ -474,9 +454,9 @@ namespace TranscribirMontos
             return Transcipcion;
         }
 
-        public string monto { get; set; }
-        public string[] numeros { get; set; }
-        public int digitos;
-        public static List<string> DecenasEspeciales = new List<string>() { "10", "11", "12", "13", "14", "15", "16", "17", "18", "19" };
+        public string Monto { get; set; }
+        public string[] Numeros { get; set; }
+        public int Digitos;
+        private static List<string> DecenasEspeciales = new List<string>() { "10", "11", "12", "13", "14", "15", "16", "17", "18", "19" };
     }
 }
