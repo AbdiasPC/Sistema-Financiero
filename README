@@ -1,0 +1,17 @@
+Éste es un módulo de un sistema bancario que Transcribe el monto de Dinero de números en Letras. 
+
+Actualmente el módulo acepta tanto números enteros como decimales con un nivel de precisión de 3 cifras significativas.
+
+RECOMENDACIONES para un buen uso:
+-Escribir la parte entera de el número separando por comas cada 3 dígitos.
+-Luego coloque un punto y defina la parte decimal de 1-3 cifras significativas.
+
+Ejemplo:
+ 12,567
+
+  26.75
+  
+  4,556,238
+  
+  36,851,234.35
+Cualquier sugerencia será más que bienvenida, no soy un programador experto pero estoy trabajando para serlo 
