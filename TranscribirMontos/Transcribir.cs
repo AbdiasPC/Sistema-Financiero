@@ -29,6 +29,13 @@ namespace TranscribirMontos
                     Console.WriteLine(SepDecimales(monto));
                     Console.WriteLine("Cantidad de digitos {0} y cantidad de partes {1}",CantidadDigitos(monto),CantidadPartes(cifras));
                     ImprimirDigitos(monto);
+
+
+                    var SalidaEnteros = LeerDigitos(cifras, CantidadPartes(cifras));
+                    var SalidaDecimales = LeerDigitos(SepDecimales(monto));
+
+                    Console.WriteLine(SalidaEnteros + " PESOS CON " + SalidaDecimales + " CENTAVOS");
+
                 }
                 else
                 {
@@ -38,6 +45,12 @@ namespace TranscribirMontos
                     Console.WriteLine(SepDecimales(monto));
                     Console.WriteLine("Cantidad de digitos {0}", CantidadDigitos(monto));
                     ImprimirDigitos(monto);
+
+                    var SalidaEnteros = LeerDigitos(cifras);
+                    var SalidaDecimales = LeerDigitos(SepDecimales(monto));
+
+                    Console.WriteLine(SalidaEnteros + " PESOS CON "+ SalidaDecimales+" CENTAVOS");
+
                 }             
 
             }
@@ -302,7 +315,14 @@ namespace TranscribirMontos
             Unidades.Add('8', "OCHOCIENTO");
             Unidades.Add('9', "NOVECIENTO");
 
-            return Unidades[unidad];
+            try
+            {
+                return Unidades[unidad];
+            }
+            catch (KeyNotFoundException)
+            {
+                return "";
+            }
         }
 
         private static string LeerDigitos(string[] partes,int cantPartes)
@@ -422,8 +442,16 @@ namespace TranscribirMontos
                     else
                     {
                         Transcipcion += (ConvertirCentenas(numeros[0]) + " ");
-                        var numeros2 = numeros.Substring(1);
-                        Transcipcion += LeerDigitos(numeros2);
+                        if (numeros[1] == '0')
+                        {
+                            Transcipcion += "";
+                            Transcipcion += LeerDigitos(numeros.Substring(2));
+                        }
+                        else
+                        {
+                            var numeros2 = numeros.Substring(1);
+                            Transcipcion += LeerDigitos(numeros2);
+                        }
 
                     }
                     break;
