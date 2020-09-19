@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace TranscribirMontos
 {
-    class Transcribir
+    public class Transcribir
     {
         public Transcribir(string monto)
         {
-            this.Monto = monto;
-            this.Digitos = monto.Length;
+            Monto = monto;
+            Digitos = monto.Length;
         }
 
         public static void LeerMonto(string monto)
