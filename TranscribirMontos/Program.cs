@@ -15,6 +15,8 @@ namespace TranscribirMontos
 
             Transcribir.LeerMonto(monto);
 
+            Console.Write("Probando VS Code Web")
+
             
         }
     }
